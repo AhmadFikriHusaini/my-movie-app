@@ -1,9 +1,23 @@
-import { Text, View } from 'react-native'
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { Pressable, Text, View } from 'react-native'
 
-const HomeScreen = (): JSX.Element => {
+const HomeScreen = ({ navigation }: any): JSX.Element => {
   return (
-    <View>
+    <View
+      style={{
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}
+    >
       <Text>Home Screen</Text>
+      <Pressable
+        onPress={() => {
+          navigation.navigate('MovieDetail')
+        }}
+      >
+        <Text>Go To Detail</Text>
+      </Pressable>
     </View>
   )
 }
