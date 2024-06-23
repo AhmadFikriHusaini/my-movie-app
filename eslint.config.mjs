@@ -7,11 +7,19 @@ import eslintConfigPrettier from "eslint-config-prettier";
 
 
 export default [
-  { files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"] },
+  {
+    files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"],
+  },
   { languageOptions: { parserOptions: { ecmaFeatures: { jsx: true }, project: "./tsconfig.json" } } },
   { languageOptions: { globals: globals.browser } },
   pluginJs.configs.recommended,
   ...tseslint.configs.recommended,
   ...fixupConfigRules(pluginReactConfig),
-  eslintConfigPrettier
+  eslintConfigPrettier,
+  {
+    rules: {
+      "react/jsx-uses-react": "off",
+      "react/react-in-jsx-scope": "off"
+    }
+  }
 ];
