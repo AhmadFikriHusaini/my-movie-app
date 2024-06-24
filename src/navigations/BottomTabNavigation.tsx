@@ -1,16 +1,16 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import HomeScreen from '../screens/Home'
 import SearchScreen from '../screens/Search'
 import FavoriteScreen from '../screens/Favorite'
 import { Feather } from '@expo/vector-icons'
+import HomeStackNavigator from './HomeStackNavigation'
 
 const Tab = createBottomTabNavigator()
 const BottomTabNavigator = (): JSX.Element => {
   return (
     <Tab.Navigator>
       <Tab.Screen
-        name="home"
-        component={HomeScreen}
+        name="hometab"
+        component={HomeStackNavigator}
         options={{
           title: 'Home',
           headerShown: false,
