@@ -13,7 +13,7 @@ import { StackActions, useNavigation } from '@react-navigation/native'
 const MovieItem = ({ movie, size, coverType }: MovieItemProps): JSX.Element => {
   const navigation = useNavigation()
   const pushAction = StackActions.push('MovieDetail', {
-    movie,
+    id: movie.id,
   })
   return (
     <Pressable onPress={() => navigation.dispatch(pushAction)}>
@@ -30,7 +30,7 @@ const MovieItem = ({ movie, size, coverType }: MovieItemProps): JSX.Element => {
           locations={[0.6, 0.8]}
           style={styles.gradientStyle}
         >
-          <Text style={styles.movieTitle}>{movie.title}</Text>
+          <Text style={styles.movieTitle}>{movie.title ?? movie.name}</Text>
           <View style={styles.ratingContainer}>
             <FontAwesome name="star" size={16} color="yellow" />
             <Text style={styles.rating}>{movie.vote_average.toFixed(1)}</Text>
