@@ -1,6 +1,7 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import MovieDetailScreen from '../screens/MovieDetail'
 import SearchScreen from '../screens/Search'
+import GenreScreen from '../screens/Genre'
 
 const Stack = createNativeStackNavigator()
 const SearchStackNavigator = () => {
@@ -14,6 +15,13 @@ const SearchStackNavigator = () => {
         }}
       />
       <Stack.Screen name="MovieDetail" component={MovieDetailScreen} />
+      <Stack.Screen
+        name="Genre"
+        component={GenreScreen}
+        options={{
+          title: 'Genre',
+        }}
+      />
     </Stack.Navigator>
   )
 }
