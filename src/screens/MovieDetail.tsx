@@ -2,7 +2,14 @@
 import { FontAwesome } from '@expo/vector-icons'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { useEffect, useState } from 'react'
-import { FlatList, ImageBackground, Pressable, Text, View } from 'react-native'
+import {
+  FlatList,
+  ImageBackground,
+  Pressable,
+  ScrollView,
+  Text,
+  View,
+} from 'react-native'
 import { Movie, MovieDetailProps } from '../types/app'
 import { LinearGradient } from 'expo-linear-gradient'
 import { API_ACCESS_TOKEN } from '@env'
@@ -143,7 +150,7 @@ const MovieDetailScreen = ({ route }: any): JSX.Element => {
   //     })
   // }
   return (
-    <View>
+    <ScrollView showsVerticalScrollIndicator={false}>
       <ImageBackground
         style={{
           width: '100%',
@@ -224,6 +231,7 @@ const MovieDetailScreen = ({ route }: any): JSX.Element => {
           }}
         >
           <FlatList
+            showsHorizontalScrollIndicator={false}
             horizontal
             data={movieDetail?.genres}
             renderItem={({ item }) => (
@@ -268,12 +276,85 @@ const MovieDetailScreen = ({ route }: any): JSX.Element => {
       >
         <Text
           style={{
+            marginBottom: 4,
+            fontSize: 18,
+            fontWeight: 'bold',
+          }}
+        >
+          Overview:{' '}
+        </Text>
+        <Text
+          style={{
             fontSize: 16,
             textAlign: 'justify',
           }}
         >
           {movieDetail?.overview}
         </Text>
+        <View
+          style={{
+            marginTop: 12,
+            display: 'flex',
+            flexDirection: 'row',
+          }}
+        >
+          <View>
+            <Text
+              style={{
+                fontWeight: 'bold',
+              }}
+            >
+              Popularity
+            </Text>
+            <Text>{movieDetail?.popularity}</Text>
+          </View>
+          <View
+            style={{
+              marginLeft: 20,
+            }}
+          >
+            <Text
+              style={{
+                fontWeight: 'bold',
+              }}
+            >
+              Release Date
+            </Text>
+            <Text>{movieDetail?.release_date}</Text>
+          </View>
+        </View>
+        <View
+          style={{
+            marginTop: 12,
+            display: 'flex',
+            flexDirection: 'row',
+          }}
+        >
+          <View>
+            <Text
+              style={{
+                fontWeight: 'bold',
+              }}
+            >
+              Vote Count
+            </Text>
+            <Text>{movieDetail?.vote_count}</Text>
+          </View>
+          <View
+            style={{
+              marginLeft: 20,
+            }}
+          >
+            <Text
+              style={{
+                fontWeight: 'bold',
+              }}
+            >
+              Language
+            </Text>
+            <Text>{movieDetail?.original_language}</Text>
+          </View>
+        </View>
       </View>
       <View>
         <View
@@ -320,7 +401,7 @@ const MovieDetailScreen = ({ route }: any): JSX.Element => {
           keyExtractor={(item) => item.id.toString()}
         />
       </View>
-    </View>
+    </ScrollView>
   )
 }
 
