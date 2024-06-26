@@ -24,7 +24,7 @@ const CategorySearch = (): JSX.Element => {
     fetchData()
   }, [])
   return (
-    <View style={{ marginTop: 18 }}>
+    <View style={{ marginTop: 18, marginHorizontal: 4 }}>
       <FlatList
         numColumns={4}
         data={genres}
@@ -32,10 +32,10 @@ const CategorySearch = (): JSX.Element => {
           <Pressable
             style={{
               backgroundColor: '#8978A4',
-              padding: 10,
-              gap: 10,
+              padding: 8,
+              gap: 8,
               borderRadius: 10,
-              margin: 5,
+              margin: 4,
             }}
             onPress={() => {
               navigation.dispatch(

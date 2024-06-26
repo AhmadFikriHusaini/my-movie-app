@@ -72,19 +72,26 @@ const KeywordSearch = (): JSX.Element => {
           }}
           contentContainerStyle={{
             paddingVertical: 16,
-            paddingHorizontal: 20,
             gap: 10,
           }}
-          numColumns={4}
+          numColumns={3}
           data={outputSearch}
           keyExtractor={(item) => item.id.toString()}
           renderItem={({ item }) => (
-            <MovieItem
-              movie={item}
-              size={{ width: 100, height: 160 }}
-              coverType="poster"
-              key={item.id}
-            />
+            <View
+              style={{
+                flex: 1,
+                alignItems: 'center',
+                marginRight: 4,
+              }}
+            >
+              <MovieItem
+                movie={item}
+                size={{ width: 100, height: 160 }}
+                coverType="poster"
+                key={item.id}
+              />
+            </View>
           )}
         />
         // <ScrollView showsVerticalScrollIndicator={false}>
