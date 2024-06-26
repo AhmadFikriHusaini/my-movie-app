@@ -7,12 +7,14 @@ import { Movie, MovieDetailProps } from '../types/app'
 import { LinearGradient } from 'expo-linear-gradient'
 import { API_ACCESS_TOKEN } from '@env'
 import MovieItem from './movies/MovieItem'
+import { StackActions, useNavigation } from '@react-navigation/native'
 
 const MovieDetailScreen = ({ route }: any): JSX.Element => {
   const { id } = route.params
   const [recommendation, setRecommendation] = useState<Movie[]>([])
   const [isFavorite, setIsFavorite] = useState<boolean>(false)
   const [movieDetail, setMovieDetail] = useState<MovieDetailProps>()
+  const navigation = useNavigation()
 
   const fetchMovieDetail = (): void => {
     const options = {
@@ -213,15 +215,47 @@ const MovieDetailScreen = ({ route }: any): JSX.Element => {
         </Pressable>
       </View>
       <View>
-        <Text
+        <View
           style={{
             marginLeft: 20,
             marginTop: -20,
             marginBottom: 10,
+            marginRight: 80,
           }}
         >
-          {id}
-        </Text>
+          <FlatList
+            horizontal
+            data={movieDetail?.genres}
+            renderItem={({ item }) => (
+              <Pressable
+                onPress={() => {
+                  navigation.dispatch(
+                    StackActions.push('Genre', {
+                      id: item.id,
+                      name: item.name,
+                    }),
+                  )
+                }}
+                style={{
+                  backgroundColor: '#8978A4',
+                  paddingHorizontal: 8,
+                  paddingVertical: 8,
+                  borderRadius: 50,
+                  marginRight: 8,
+                }}
+              >
+                <Text
+                  style={{
+                    fontWeight: 'bold',
+                    color: 'white',
+                  }}
+                >
+                  {item.name}
+                </Text>
+              </Pressable>
+            )}
+          />
+        </View>
       </View>
       <View
         style={{
