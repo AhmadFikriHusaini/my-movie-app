@@ -18,6 +18,9 @@ const KeywordSearch = (): JSX.Element => {
         Authorization: `Bearer ${API_ACCESS_TOKEN}`,
       },
     }
+    if (API_ACCESS_TOKEN == null) {
+      throw new Error('ENV not found')
+    }
 
     fetch(
       `https://api.themoviedb.org/3/search/movie?query=${debounceKeyword}&include_adult=false&language=en-US&page=1`,

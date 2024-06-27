@@ -14,6 +14,9 @@ const CategorySearch = (): JSX.Element => {
         Authorization: `Bearer ${API_ACCESS_TOKEN}`,
       },
     }
+    if (API_ACCESS_TOKEN == null) {
+      throw new Error('ENV not found')
+    }
 
     fetch('https://api.themoviedb.org/3/genre/movie/list?language=en', options)
       .then((response) => response.json())
