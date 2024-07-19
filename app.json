@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "my-movie-app",
-    "slug": "my-movie-app",
+    "slug": "movie-app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -26,8 +26,9 @@
     },
     "extra": {
       "eas": {
-        "projectId": "6fff41ac-eddf-441b-831c-aa710eb8f686"
+        "projectId": "add8dacf-3076-42b6-8556-eeca04169109"
       }
-    }
+    },
+    "owner": "fffikry"
   }
 }

@@ -29,7 +29,7 @@ yarn-error.*
 *.pem
 
 #env
-.env
+# .env
 
 # local env files
 .env*.local
